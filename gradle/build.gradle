@@ -1,0 +1,18 @@
+plugins {
+    id 'java'
+    id 'application'
+}
+dependencies {
+    testImplementation("io.cucumber:cucumber-java:7.13.0")
+    testImplementation("io.cucumber:cucumber-junit:7.13.0")
+    testImplementation("net.masterthought:cucumber-reporting:5.7.6")
+}
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+}
+
+test {
+    systemProperty "cucumber.filter.tags", System.getProperty("cucumber.filter.tags")
+}
