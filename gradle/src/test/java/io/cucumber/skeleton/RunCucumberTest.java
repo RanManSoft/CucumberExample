@@ -14,13 +14,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RunWith(Cucumber.class)
-@CucumberOptions(plugin = {"pretty", "html:target/cucumber-htmlreport", "json:target/cucumber-report.json"})
+@CucumberOptions(plugin = {"pretty", "html:target/cucumber-htmlreport", "json:build/cucumber-report.json"})
 public class RunCucumberTest {
     @AfterClass
     public static void teardown() {
         File reportOutputDirectory = new File("target/");
         List<String> jsonFiles = new ArrayList<>();
-        jsonFiles.add("target/cucumber-report.json");
+        jsonFiles.add("build/cucumber-report.json");
         String projectName = "RealWorld";
         Configuration configuration = new Configuration(reportOutputDirectory, projectName);
         configuration.setSortingMethod(SortingMethod.NATURAL);

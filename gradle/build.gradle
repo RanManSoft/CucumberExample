@@ -1,6 +1,8 @@
 plugins {
     id 'java'
     id 'application'
+    id "io.datapith.cukedoctor" version "0.1.0"
+    id 'org.asciidoctor.jvm.convert' version '4.0.2'
 }
 dependencies {
     testImplementation("io.cucumber:cucumber-java:7.13.0")
@@ -12,6 +14,15 @@ repositories {
     mavenLocal()
     mavenCentral()
 }
+
+asciidoctor {
+    sourceDir  file('build/cukedoctor')
+    sources {
+        include 'documentation.adoc', 'another.adoc', 'third.adoc'
+    }
+    outputDir  file('target/livingdoc')
+}
+
 
 test {
     systemProperty "cucumber.filter.tags", System.getProperty("cucumber.filter.tags")
